@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "src": ".*",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS"
+      }
+    }
+  ]
+}
