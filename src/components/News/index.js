@@ -9,7 +9,7 @@ import api from "../../services/api";
 import { toast } from "react-toastify";
 // import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
-const Blog = () => {
+const News = () => {
   const [metaDes, setMetaDes] = useState("");
   const [foucKW, setFoucKW] = useState("");
   const [slug, setSlug] = useState("");
@@ -159,4 +159,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default News;
