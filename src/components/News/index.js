@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import { TagsInput } from "react-tag-input-component";
-import { EditorState, convertToRaw } from "draft-js";
+// import { EditorState, convertToRaw } from "dr/aft-js";
 import { storage } from "../../firebase";
-import draftToHtml from "draftjs-to-html";
-import { Editor } from "react-draft-wysiwyg";
+// import draftToHtml from "draftjs-to-html";
+// import { Editor } from "react-draft-wysiwyg";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const Blog = () => {
   const [metaDes, setMetaDes] = useState("");
@@ -16,7 +16,7 @@ const Blog = () => {
   const [seoTitle, setSeoTitle] = useState([]);
   const [image, setImage] = useState();
   const [seoTitleError, setSeoTitleError] = useState(false);
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  // const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,9 +31,8 @@ const Blog = () => {
           .child(image.name)
           .getDownloadURL()
           .then(async (urls) => {
-
             let finalData = {
-              title: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+              title: "",
               metaDes: metaDes,
               foucKW: foucKW,
               slug: slug,
@@ -61,24 +60,23 @@ const Blog = () => {
           });
       });
   };
-  const onEditorStateChange = (newEditorState) => {
-    setEditorState(newEditorState);
-  };
+  // const onEditorStateChange = (newEditorState) => {
+  //   setEditorState(newEditorState);
+  // };
 
   return (
     <div>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="exampleEmail">Content Description</Label>
-          <Editor
+          {/* <Editor
             className="border border-primary"
             editorState={editorState}
             toolbarClassName="toolbarClassName"
             wrapperClassName="wrapperClassName"
             editorClassName="editorClassName"
             onEditorStateChange={onEditorStateChange}
-          />
-          
+          /> */}
         </FormGroup>
         <Row>
           <Col xs="6">
@@ -142,7 +140,6 @@ const Blog = () => {
           </Col>
         </Row>
         <Row>
-          
           <Col xs="6">
             <FormGroup>
               <Label for="exampleFile">File</Label>

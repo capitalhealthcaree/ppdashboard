@@ -13,21 +13,21 @@ import {
   Col,
 } from "reactstrap";
 import { TagsInput } from "react-tag-input-component";
-import {
-  EditorState,
-  convertToRaw,
-  convertFromRaw,
-  convertFromHTML,
-  ContentState,
-} from "draft-js";
+// import {
+//   EditorState,
+//   convertToRaw,
+//   convertFromRaw,
+//   convertFromHTML,
+//   ContentState,
+// } from "draft-js";
 import { storage } from "../../firebase";
-import { htmlToDraft, draftToHtml } from "draftjs-to-html";
+// import { htmlToDraft, draftToHtml } from "draftjs-to-html";
 // import { htmlToDraft } from "draftjs-to-html";
 // import { EditorState,  } from 'draft-js';
-import { Editor } from "react-draft-wysiwyg";
+// import { Editor } from "react-draft-wysiwyg";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 function BlogEdit({ show, close, data }) {
   const [metaDes, setMetaDes] = useState(data.metaDes);
@@ -53,7 +53,7 @@ function BlogEdit({ show, close, data }) {
           .getDownloadURL()
           .then(async (urls) => {
             let finalData = {
-              title: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+              title: "",
               metaDes: metaDes,
               foucKW: foucKW,
               slug: slug,
@@ -81,9 +81,9 @@ function BlogEdit({ show, close, data }) {
           });
       });
   };
-  const onEditorStateChange = (newEditorState) => {
-    setEditorState(newEditorState);
-  };
+  // const onEditorStateChange = (newEditorState) => {
+  //   setEditorState(newEditorState);
+  // };
 
   return (
     <div>
@@ -93,14 +93,14 @@ function BlogEdit({ show, close, data }) {
           <Form onSubmit={handleSubmit}>
             <FormGroup>
               <Label for="exampleEmail">Content Description</Label>
-              <Editor
+              {/* <Editor
                 className="border border-primary"
                 editorState={editorState}
                 toolbarClassName="toolbarClassName"
                 wrapperClassName="wrapperClassName"
                 editorClassName="editorClassName"
                 onEditorStateChange={onEditorStateChange}
-              />
+              /> */}
             </FormGroup>
             <Row>
               <Col xs="6">
