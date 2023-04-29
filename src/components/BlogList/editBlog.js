@@ -15,22 +15,16 @@ import {
 } from "reactstrap";
 
 import { TagsInput } from "react-tag-input-component";
-import {
-  EditorState,
-  convertToRaw,
-  convertFromRaw,
-  convertFromHTML,
-  ContentState,
-} from "draft-js";
+
 import { storage } from "../../firebase";
-import { htmlToDraft, draftToHtml } from "draftjs-to-html";
+// import { htmlToDraft, draftToHtml } from "draftjs-to-html";
 // import { htmlToDraft } from "draftjs-to-html";
 // import { EditorState,  } from 'draft-js';
-import { Editor } from "react-draft-wysiwyg";
+// import { Editor } from "react-draft-wysiwyg";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
 function BlogEdit({ show, close, data, callApi }) {
   const [metaDes, setMetaDes] = useState(data.metaDes);
   const [foucKW, setFoucKW] = useState(data.foucKW);
@@ -39,8 +33,9 @@ function BlogEdit({ show, close, data, callApi }) {
   const [category, setCategory] = useState(data.category);
   const [image, setImage] = useState(data.image);
   const [seoTitleError, setSeoTitleError] = useState(false);
-  const [editorState, setEditorState] = useState();
+  // const [editorState, setEditorState] = useState();
   const [loader, setLoader] = useState(false);
+  const [title, setTitle] = useState(data.title);
 
   // const handleSubmit = async (event) => {
   //   event.preventDefault();
@@ -113,9 +108,9 @@ function BlogEdit({ show, close, data, callApi }) {
       setLoader(false);
     }
   };
-  const onEditorStateChange = (newEditorState) => {
-    setEditorState(newEditorState);
-  };
+  // const onEditorStateChange = (newEditorState) => {
+  // 	setEditorState(newEditorState);
+  // };
 
   return (
     <div>
@@ -125,13 +120,13 @@ function BlogEdit({ show, close, data, callApi }) {
           <Form onSubmit={handleSubmit}>
             <FormGroup>
               <Label for="exampleEmail">Content Description</Label>
-              <Editor
-                className="border border-primary"
-                editorState={editorState}
-                toolbarClassName="toolbarClassName"
-                wrapperClassName="wrapperClassName"
-                editorClassName="editorClassName"
-                onEditorStateChange={onEditorStateChange}
+              <CKEditor
+                editor={ClassicEditor}
+                data={title}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setTitle(data);
+                }}
               />
             </FormGroup>
             <Row>

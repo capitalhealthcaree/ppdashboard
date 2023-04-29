@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import { TagsInput } from "react-tag-input-component";
-import { EditorState, convertToRaw } from "draft-js";
+// import { EditorState, convertToRaw } from "draft-js";
 import { storage } from "../../firebase";
-import draftToHtml from "draftjs-to-html";
-import { Editor } from "react-draft-wysiwyg";
+// import draftToHtml from "draftjs-to-html";
+// import { Editor } from "react-draft-wysiwyg";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
 
 const Blog = () => {
   const [metaDes, setMetaDes] = useState("");
@@ -17,8 +18,8 @@ const Blog = () => {
   const [category, setCategory] = useState("");
   const [image, setImage] = useState();
   const [seoTitleError, setSeoTitleError] = useState(false);
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-
+  // const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const [title, setTitle] = useState("");
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -32,9 +33,8 @@ const Blog = () => {
           .child(image.name)
           .getDownloadURL()
           .then(async (urls) => {
-
             let finalData = {
-              title: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+              title: title,
               metaDes: metaDes,
               foucKW: foucKW,
               slug: slug,
@@ -63,24 +63,23 @@ const Blog = () => {
           });
       });
   };
-  const onEditorStateChange = (newEditorState) => {
-    setEditorState(newEditorState);
-  };
+  // const onEditorStateChange = (newEditorState) => {
+  // 	setEditorState(newEditorState);
+  // };
 
   return (
     <div>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="exampleEmail">Content Description</Label>
-          <Editor
-            className="border border-primary"
-            editorState={editorState}
-            toolbarClassName="toolbarClassName"
-            wrapperClassName="wrapperClassName"
-            editorClassName="editorClassName"
-            onEditorStateChange={onEditorStateChange}
+          <CKEditor
+            editor={ClassicEditor}
+            data={title}
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              setTitle(data);
+            }}
           />
-          
         </FormGroup>
         <Row>
           <Col xs="6">
@@ -152,7 +151,6 @@ const Blog = () => {
                 <option value={"health-tips"}>Health Tips</option>
                 <option value={"update"}>Update</option>
                 <option value={"treatments"}>Treatments</option>
-
               </Input>
             </FormGroup>
           </Col>
