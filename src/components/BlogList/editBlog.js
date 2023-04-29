@@ -123,8 +123,8 @@ function BlogEdit({ show, close, data, callApi }) {
               <CKEditor
                 editor={ClassicEditor}
                 data={title}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
+                onChange={async (event, editor) => {
+                  const data = await editor.getData();
                   setTitle(data);
                 }}
               />
