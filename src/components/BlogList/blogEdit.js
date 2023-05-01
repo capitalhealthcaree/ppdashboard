@@ -16,7 +16,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { useLocation } from "react-router-dom";
 
-function BlogEdit() {
+const BlogEdit = () => {
   const location = useLocation();
 
   let data = location.state.blogData;
@@ -195,6 +195,6 @@ function BlogEdit() {
       </Form>
     </div>
   );
-}
+};
 
 export default BlogEdit;
