@@ -19,7 +19,7 @@ const Blog = () => {
   const [image, setImage] = useState();
   const [seoTitleError, setSeoTitleError] = useState(false);
   // const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [title, setTitle] = useState("<p>hi</p>");
+  const [title, setTitle] = useState("");
   const handleSubmit = async (event) => {
     event.preventDefault();
 
