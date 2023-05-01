@@ -14,7 +14,7 @@ import api from "../../services/api";
 import { toast } from "react-toastify";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const BlogEdit = () => {
   const location = useLocation();
@@ -56,7 +56,11 @@ const BlogEdit = () => {
       setLoader(false);
     }
   };
-
+  useEffect(() => {
+    ClassicEditor.create(document.querySelector("#editor")).then((editor) => {
+      console.log("Editor was initialized", editor);
+    });
+  }, []);
   return (
     <div>
       <Form onSubmit={handleSubmit}>
