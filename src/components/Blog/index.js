@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 
-const Blog = () => {
+function Blog() {
   const [metaDes, setMetaDes] = useState("");
   const [foucKW, setFoucKW] = useState("");
   const [slug, setSlug] = useState("");
@@ -192,6 +192,6 @@ const Blog = () => {
       </Form>
     </div>
   );
-};
+}
 
 export default Blog;
