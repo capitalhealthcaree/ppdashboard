@@ -56,6 +56,15 @@ const BlogEdit = () => {
       setLoader(false);
     }
   };
+  useEffect(() => {
+    ClassicEditor.create(document.querySelector("#myEditor"))
+      .then((editor) => {
+        console.log("Editor initialized", editor);
+      })
+      .catch((error) => {
+        console.error("Editor initialization error", error);
+      });
+  }, []);
   return (
     <div>
       <Form onSubmit={handleSubmit}>
@@ -67,6 +76,10 @@ const BlogEdit = () => {
             onReady={(editor) => {
               // You can store the "editor" and use when it is needed.
               console.log("Editor is ready to use!", editor);
+            }}
+            onInit={(editor) => {
+              // This code will run when the editor is initialized
+              console.log("Editor is ready to use", editor);
             }}
             onChange={async (event, editor) => {
               const data = await editor.getData();

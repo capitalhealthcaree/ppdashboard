@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import { TagsInput } from "react-tag-input-component";
 // import { EditorState, convertToRaw } from "draft-js";
@@ -19,7 +19,7 @@ const Blog = () => {
   const [image, setImage] = useState();
   const [seoTitleError, setSeoTitleError] = useState(false);
   // const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("<p>hi</p>");
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -63,9 +63,15 @@ const Blog = () => {
           });
       });
   };
-  // const onEditorStateChange = (newEditorState) => {
-  // 	setEditorState(newEditorState);
-  // };
+  useEffect(() => {
+    ClassicEditor.create(document.querySelector("#myEditor"))
+      .then((editor) => {
+        console.log("Editor initialized", editor);
+      })
+      .catch((error) => {
+        console.error("Editor initialization error", error);
+      });
+  }, []);
 
   return (
     <div>
@@ -78,6 +84,10 @@ const Blog = () => {
             onReady={(editor) => {
               // You can store the "editor" and use when it is needed.
               console.log("Editor is ready to use!", editor);
+            }}
+            onInit={(editor) => {
+              // This code will run when the editor is initialized
+              console.log("Editor is ready to use", editor);
             }}
             onChange={async (event, editor) => {
               const data = await editor.getData();
