@@ -7,14 +7,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import api from "../../services/api";
 import "./style.css";
 import "react-pagination-bar/dist/index.css";
-import EditBlog from "./editBlog";
+import { useHistory } from "react-router-dom";
 
 const Blog = () => {
+  const history = useHistory();
+
   const [list, setList] = useState("");
   const [deletLoader, setDeletLoader] = useState(false);
   const [deletedBlogId, setDeletedBlogId] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [show, setShow] = useState(false);
 
   const pagePostsLimit = 12;
   async function fetchData() {
@@ -71,18 +72,13 @@ const Blog = () => {
                     <FontAwesomeIcon
                       icon={faEdit}
                       onClick={() => {
-                        setShow(true);
+                        history.push({
+                          pathname: "/blogedit",
+                          state: { blogData: data },
+                        });
                         setDeletedBlogId(data._id);
                       }}
                     />
-                    {deletedBlogId === data._id && (
-                      <EditBlog
-                        show={show}
-                        close={() => setShow(false)}
-                        data={data}
-                        callApi={fetchData}
-                      />
-                    )}
                   </div>
                   <div
                     onClick={() => deletBlog(data._id)}
