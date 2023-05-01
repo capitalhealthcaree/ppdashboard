@@ -63,15 +63,6 @@ const Blog = () => {
           });
       });
   };
-  useEffect(() => {
-    ClassicEditor.create(document.querySelector("#myEditor"))
-      .then((editor) => {
-        console.log("Editor initialized", editor);
-      })
-      .catch((error) => {
-        console.error("Editor initialization error", error);
-      });
-  }, []);
 
   return (
     <div>
