@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   Button,
   Form,
@@ -12,8 +12,6 @@ import {
 import { TagsInput } from "react-tag-input-component";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { useLocation } from "react-router-dom";
 import JoditEditor from "jodit-react";
 
@@ -58,11 +56,7 @@ const BlogEdit = () => {
       setLoader(false);
     }
   };
-  useEffect(() => {
-    ClassicEditor.create(document.querySelector("#editor")).then((editor) => {
-      console.log("Editor was initialized", editor);
-    });
-  }, []);
+
   return (
     <div>
       <Form onSubmit={handleSubmit}>
@@ -71,30 +65,12 @@ const BlogEdit = () => {
           <JoditEditor
             ref={editor}
             value={title}
-            // config={config}
             tabIndex={1} // tabIndex of textarea
-            onBlur={(newContent) => setTitle(newContent)} // preferred to use only this option to update the content for performance reasons
             onChange={(newContent) => {
               setTitle(newContent);
               console.log("dr sahib", newContent);
             }}
           />
-          {/* <CKEditor
-            editor={ClassicEditor}
-            data={title}
-            onReady={(editor) => {
-              // You can store the "editor" and use when it is needed.
-              console.log("Editor is ready to use!", editor);
-            }}
-            onInit={(editor) => {
-              // This code will run when the editor is initialized
-              console.log("Editor is ready to use", editor);
-            }}
-            onChange={async (event, editor) => {
-              const data = await editor.getData();
-              setTitle(data);
-            }}
-          /> */}
         </FormGroup>
         <Row>
           <Col xs="6">

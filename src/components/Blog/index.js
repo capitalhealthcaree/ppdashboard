@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 
 const Blog = () => {
   const editor = useRef(null);
-  const [content, setContent] = useState("");
   const [metaDes, setMetaDes] = useState("");
   const [foucKW, setFoucKW] = useState("");
   const [slug, setSlug] = useState("");
@@ -70,7 +69,6 @@ const Blog = () => {
             ref={editor}
             value={title}
             tabIndex={1} // tabIndex of textarea
-            // onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
             onChange={(newContent) => {
               setTitle(newContent);
             }}

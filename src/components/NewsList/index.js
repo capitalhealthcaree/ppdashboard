@@ -7,14 +7,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import api from "../../services/api";
 import "./style.css";
 import "react-pagination-bar/dist/index.css";
-import EditNews from "./editNews";
+import { useHistory } from "react-router-dom";
 
 const News = () => {
+  const history = useHistory();
+
   const [list, setList] = useState("");
   const [deletLoader, setDeletLoader] = useState(false);
   const [deletedBlogId, setDeletedBlogId] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [show, setShow] = useState(false);
 
   const pagePostsLimit = 12;
 
@@ -72,17 +73,13 @@ const News = () => {
                     <FontAwesomeIcon
                       icon={faEdit}
                       onClick={() => {
-                        setShow(true);
+                        history.push({
+                          pathname: "/newsedit",
+                          state: { blogData: data },
+                        });
                         setDeletedBlogId(data._id);
                       }}
                     />
-                    {deletedBlogId === data._id && (
-                      <EditNews
-                        show={show}
-                        close={() => setShow(false)}
-                        data={data}
-                      />
-                    )}
                   </div>
                   <div
                     onClick={() => deletBlog(data._id)}
@@ -102,11 +99,6 @@ const News = () => {
                 />
                 <h3>{data.seoTitle[0]}</h3>
                 <p>{data.category}</p>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: data ? data.title : "",
-                  }}
-                />
               </div>
             ))}
         </div>

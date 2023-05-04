@@ -9,6 +9,7 @@ import NewsList from "../NewsList";
 import Appointments from "../Appointment";
 import BlogList from "../BlogList";
 import EditBlog from "../BlogList/blogEdit";
+import EditNews from "../NewsList/editNews";
 
 const Content = ({ sidebarIsOpen, toggleSidebar }) => (
   <Container
@@ -23,7 +24,7 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
       <Route exact path="/newslist" component={() => <NewsList />} />
       <Route exact path="/bloglist" component={() => <BlogList />} />
       <Route exact path="/blogedit" component={() => <EditBlog />} />
-
+      <Route exact path="/newsedit" component={() => <EditNews />} />
       <Route exact path="/appointments" component={() => <Appointments />} />
     </Switch>
   </Container>
