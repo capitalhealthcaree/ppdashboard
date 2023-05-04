@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Button,
   Form,
@@ -15,9 +15,11 @@ import { toast } from "react-toastify";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { useLocation } from "react-router-dom";
+import JoditEditor from "jodit-react";
 
 const BlogEdit = () => {
   const location = useLocation();
+  const editor = useRef(null);
 
   let data = location.state.blogData;
   const [metaDes, setMetaDes] = useState(data.metaDes);
@@ -66,7 +68,18 @@ const BlogEdit = () => {
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="exampleEmail">Content Description</Label>
-          <CKEditor
+          <JoditEditor
+            ref={editor}
+            value={title}
+            // config={config}
+            tabIndex={1} // tabIndex of textarea
+            onBlur={(newContent) => setTitle(newContent)} // preferred to use only this option to update the content for performance reasons
+            onChange={(newContent) => {
+              setTitle(newContent);
+              console.log("dr sahib", newContent);
+            }}
+          />
+          {/* <CKEditor
             editor={ClassicEditor}
             data={title}
             onReady={(editor) => {
@@ -81,7 +94,7 @@ const BlogEdit = () => {
               const data = await editor.getData();
               setTitle(data);
             }}
-          />
+          /> */}
         </FormGroup>
         <Row>
           <Col xs="6">

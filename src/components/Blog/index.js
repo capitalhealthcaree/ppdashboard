@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
+import JoditEditor from "jodit-react";
+
 import { TagsInput } from "react-tag-input-component";
 // import { EditorState, convertToRaw } from "draft-js";
 import { storage } from "../../firebase";
@@ -11,6 +13,8 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 
 const Blog = () => {
+  const editor = useRef(null);
+  const [content, setContent] = useState("");
   const [metaDes, setMetaDes] = useState("");
   const [foucKW, setFoucKW] = useState("");
   const [slug, setSlug] = useState("");
@@ -69,7 +73,18 @@ const Blog = () => {
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="exampleEmail">Content Description</Label>
-          <CKEditor
+          <JoditEditor
+            ref={editor}
+            value={title}
+            // config={config}
+            tabIndex={1} // tabIndex of textarea
+            onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+            onChange={(newContent) => {
+              setTitle(newContent);
+              console.log("dr sahib", newContent);
+            }}
+          />
+          {/* <CKEditor
             editor={ClassicEditor}
             data={title}
             onReady={(editor) => {
@@ -84,7 +99,7 @@ const Blog = () => {
               const data = await editor.getData();
               setTitle(data);
             }}
-          />
+          /> */}
         </FormGroup>
         <Row>
           <Col xs="6">
