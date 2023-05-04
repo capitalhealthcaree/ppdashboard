@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import { TagsInput } from "react-tag-input-component";
-// import { EditorState, convertToRaw } from "dr/aft-js";
+import { EditorState, convertToRaw } from "draft-js";
 import { storage } from "../../firebase";
 // import draftToHtml from "draftjs-to-html";
-// import { Editor } from "react-draft-wysiwyg";
+import { Editor } from "react-draft-wysiwyg";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import draftToHtml from "draftjs-to-html";
 
 const News = () => {
   const [metaDes, setMetaDes] = useState("");
@@ -16,7 +17,7 @@ const News = () => {
   const [seoTitle, setSeoTitle] = useState([]);
   const [image, setImage] = useState();
   const [seoTitleError, setSeoTitleError] = useState(false);
-  // const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,7 +33,7 @@ const News = () => {
           .getDownloadURL()
           .then(async (urls) => {
             let finalData = {
-              title: "",
+              title: draftToHtml(convertToRaw(editorState.getCurrentContent())),
               metaDes: metaDes,
               foucKW: foucKW,
               slug: slug,
@@ -60,23 +61,23 @@ const News = () => {
           });
       });
   };
-  // const onEditorStateChange = (newEditorState) => {
-  //   setEditorState(newEditorState);
-  // };
+  const onEditorStateChange = (newEditorState) => {
+    setEditorState(newEditorState);
+  };
 
   return (
     <div>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="exampleEmail">Content Description</Label>
-          {/* <Editor
+          <Editor
             className="border border-primary"
             editorState={editorState}
             toolbarClassName="toolbarClassName"
             wrapperClassName="wrapperClassName"
             editorClassName="editorClassName"
             onEditorStateChange={onEditorStateChange}
-          /> */}
+          />
         </FormGroup>
         <Row>
           <Col xs="6">
