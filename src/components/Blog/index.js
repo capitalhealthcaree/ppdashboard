@@ -5,6 +5,7 @@ import { TagsInput } from "react-tag-input-component";
 import { storage } from "../../firebase";
 import api from "../../services/api";
 import { toast } from "react-toastify";
+import { Spinner } from "reactstrap";
 
 const Blog = () => {
   const editor = useRef(null);
@@ -15,6 +16,7 @@ const Blog = () => {
   const [category, setCategory] = useState("");
   const [image, setImage] = useState();
   const [seoTitleError, setSeoTitleError] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [title, setTitle] = useState("");
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -40,9 +42,10 @@ const Blog = () => {
             };
             if (seoTitle.toString().length <= 70) {
               setSeoTitleError(false);
-
+              setLoader(true);
               let res = await api.post("/blogs/create", finalData);
               if (res.status === 200) {
+                setLoader(false);
                 toast("Blog created success", {
                   position: toast.POSITION.TOP_RIGHT,
                   autoClose: 3000,
@@ -176,7 +179,13 @@ const Blog = () => {
           </Col>
         </Row>
 
-        <Button type="submit">Submit</Button>
+        <Button
+          type="submit"
+          disabled={loader ? true : false}
+          style={{ maxWidth: "150px" }}
+        >
+          {loader ? <Spinner children={false} color="dark" /> : "Submit"}
+        </Button>
       </Form>
     </div>
   );
