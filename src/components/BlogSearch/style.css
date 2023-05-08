@@ -1,0 +1,98 @@
+.card-container-blog {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card-blog {
+  width: calc(33.33% - 10px);
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.card-blog img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.card-blog h3 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.card-blog p {
+  font-size: 14px;
+  color: #666;
+}
+.card-blog .button {
+  background-color: #004588;
+  border: none;
+  color: white;
+  padding: 3px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+/* Pagination design */
+
+.pagination {
+  display: inline-block;
+}
+.pagination a {
+  text-decoration: none;
+  color: #000;
+  float: left;
+  padding: 8px 16px;
+}
+.pagination1 a.active {
+  background-color: #003062;
+  color: #fff;
+}
+.pagination1 a:hover:not(.active) {
+  background-color: #ddd;
+}
+.pagination2 a.active {
+  background-color: #003062;
+  color: #fff;
+  border-radius: 5px;
+}
+.pagination2 a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+.pagination3 a {
+  transition: background-color 0.3s;
+}
+.pagination4 a:not(.active) {
+  border: 1px solid #ddd;
+}
+.pagination4 a.active {
+  border: 1px solid #003062;
+}
+.pagination5 a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.pagination5 a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.pagination6 a {
+  margin: 0 4px;
+}
+.pagination7 a {
+  font-size: 22px;
+}
+.center {
+  text-align: center;
+}

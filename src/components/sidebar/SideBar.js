@@ -65,6 +65,12 @@ const SideBar = ({ isOpen, toggle }) => (
           </NavLink>
         </NavItem>
         <NavItem>
+          <NavLink tag={Link} to={"/blogSeachReasult"}>
+            <FontAwesomeIcon icon={faList} className="mr-2" />
+            Blog Search
+          </NavLink>
+        </NavItem>
+        <NavItem>
           <NavLink tag={Link} to={"/news"}>
             <FontAwesomeIcon icon={faPaperPlane} className="mr-2" />
             News
