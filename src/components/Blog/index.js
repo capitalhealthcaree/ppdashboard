@@ -143,7 +143,7 @@ const Blog = () => {
                 <option value={"knee-pain"}>Knee Pain</option>
                 <option value={"joint-pain"}>Joint Pain</option>
                 <option value={"shoulder-pain"}>Shoulder Pain</option>
-                <option value={"injury-treatments"}>Injury Treatment</option>
+                <option value={"injury-treatment"}>Injury Treatment</option>
                 <option value={"health-tips"}>Health Tips</option>
                 <option value={"update"}>Update</option>
                 <option value={"treatments"}>Treatments</option>
