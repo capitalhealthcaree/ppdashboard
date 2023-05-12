@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import api from "../../services/api";
 import { Spinner } from "reactstrap";
+import html2canvas from "html2canvas";
 
 const Appointment = () => {
+  const divRef = useRef(null);
+
   const [data, setData] = useState("");
 
   useEffect(() => {
@@ -14,14 +17,27 @@ const Appointment = () => {
     }
     fetchData();
   }, []);
-
+  function handleDownloadClick() {
+    html2canvas(divRef.current).then((canvas) => {
+      const link = document.createElement("a");
+      link.download = "patient-appointments-detail.png";
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  }
   return data ? (
     <>
       <div className="row">
         {data.map((data, index) => (
-          <div className="col-12">
+          <div className="col-12" ref={divRef}>
             <div class="card mb-3">
               <div class="card-body">
+                <button
+                  className="btn btn-success"
+                  onClick={handleDownloadClick}
+                >
+                  Download Details
+                </button>
                 <div>
                   <h5 class="d-inline mr-3">First Name:</h5>
                   <p class="d-inline">{data.firstName}</p>
