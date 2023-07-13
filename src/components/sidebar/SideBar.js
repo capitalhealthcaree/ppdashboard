@@ -88,6 +88,18 @@ const SideBar = ({ isOpen, toggle }) => (
             Appointments
           </NavLink>
         </NavItem>
+        <NavItem>
+          <NavLink tag={Link} to={"/faq"}>
+            <FontAwesomeIcon icon={faList} className="mr-2" />
+            FAQ
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink tag={Link} to={"/faqlist"}>
+            <FontAwesomeIcon icon={faList} className="mr-2" />
+            FAQ List
+          </NavLink>
+        </NavItem>
       </Nav>
     </div>
   </div>
