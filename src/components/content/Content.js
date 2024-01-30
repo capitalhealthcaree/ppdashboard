@@ -9,6 +9,7 @@ import FaqList from "../FaqList";
 import News from "../News";
 import NewsList from "../NewsList";
 import Appointments from "../Appointment";
+import CallHistory from "../CallHistory";
 import BlogList from "../BlogList";
 import EditBlog from "../BlogList/blogEdit";
 import EditNews from "../NewsList/editNews";
@@ -39,6 +40,7 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
       <Route exact path="/newsedit" component={() => <EditNews />} />
       <Route exact path="/faqedit" component={() => <EditFaq />} />
       <Route exact path="/appointments" component={() => <Appointments />} />
+      <Route exact path="/callHistory" component={() => <CallHistory />} />
     </Switch>
   </Container>
 );

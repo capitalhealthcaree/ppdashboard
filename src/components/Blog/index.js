@@ -175,6 +175,7 @@ const Blog = () => {
                 id="exampleFile"
                 onChange={(e) => setImage(e.target.files[0])}
               />
+              {image && image.name}
             </FormGroup>
           </Col>
         </Row>

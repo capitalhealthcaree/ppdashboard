@@ -100,6 +100,12 @@ const SideBar = ({ isOpen, toggle }) => (
             FAQ List
           </NavLink>
         </NavItem>
+        <NavItem>
+          <NavLink tag={Link} to={"/callHistory"}>
+            <FontAwesomeIcon icon={faList} className="mr-2" />
+            Call History
+          </NavLink>
+        </NavItem>
       </Nav>
     </div>
   </div>
