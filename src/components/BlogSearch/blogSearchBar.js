@@ -14,7 +14,7 @@ const SearchBar = ({ onSearch }) => {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search..."
+        placeholder="category/slug/"
       />
       <button type="submit">Search</button>
     </form>
