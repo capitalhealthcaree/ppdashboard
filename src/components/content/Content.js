@@ -14,6 +14,8 @@ import BlogList from "../BlogList";
 import EditBlog from "../BlogList/blogEdit";
 import EditNews from "../NewsList/editNews";
 import EditFaq from "../FaqList/faqEdit";
+import Treatments from "../treatments";
+import TreatmentsList from "../treatmentsList";
 
 import BlogSeachReasult from "../BlogSearch";
 
@@ -41,6 +43,12 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
       <Route exact path="/faqedit" component={() => <EditFaq />} />
       <Route exact path="/appointments" component={() => <Appointments />} />
       <Route exact path="/callHistory" component={() => <CallHistory />} />
+      <Route exact path="/treatments" component={() => <Treatments />} />
+      <Route
+        exact
+        path="/treatmentslist"
+        component={() => <TreatmentsList />}
+      />
     </Switch>
   </Container>
 );
