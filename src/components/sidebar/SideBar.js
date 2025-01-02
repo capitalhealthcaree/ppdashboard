@@ -106,6 +106,24 @@ const SideBar = ({ isOpen, toggle }) => (
             Call History
           </NavLink>
         </NavItem>
+        <NavItem>
+          <NavLink tag={Link} to={"/add-assets"}>
+            <FontAwesomeIcon icon={faList} className="mr-2" />
+            Add Assets
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink tag={Link} to={"/assets"}>
+            <FontAwesomeIcon icon={faList} className="mr-2" />
+            Assets
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink tag={Link} to={"/folderWiseAssets"}>
+            <FontAwesomeIcon icon={faList} className="mr-2" />
+            Folder Wise Assets
+          </NavLink>
+        </NavItem>
       </Nav>
     </div>
   </div>

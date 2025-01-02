@@ -16,6 +16,9 @@ import EditNews from "../NewsList/editNews";
 import EditFaq from "../FaqList/faqEdit";
 import Treatments from "../treatments";
 import TreatmentsList from "../treatmentsList";
+import Assets from "../Assets";
+import AddAssets from "../AddAssets";
+import FolderWiseAssets from "../FolderWiseAssets";
 
 import BlogSeachReasult from "../BlogSearch";
 
@@ -48,6 +51,13 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
         exact
         path="/treatmentslist"
         component={() => <TreatmentsList />}
+      />
+      <Route exact path="/add-assets" component={() => <AddAssets />} />
+      <Route exact path="/assets" component={() => <Assets />} />
+      <Route
+        exact
+        path="/folderWiseAssets"
+        component={() => <FolderWiseAssets />}
       />
     </Switch>
   </Container>
