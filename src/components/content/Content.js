@@ -16,6 +16,8 @@ import EditNews from "../NewsList/editNews";
 import EditFaq from "../FaqList/faqEdit";
 import Treatments from "../treatments";
 import TreatmentsList from "../treatmentsList";
+import TreatmentsEdit from "../treatmentsEdit";
+
 import Assets from "../Assets";
 import AddAssets from "../AddAssets";
 import FolderWiseAssets from "../FolderWiseAssets";
@@ -47,6 +49,11 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
       <Route exact path="/appointments" component={() => <Appointments />} />
       <Route exact path="/callHistory" component={() => <CallHistory />} />
       <Route exact path="/treatments" component={() => <Treatments />} />
+      <Route
+        exact
+        path="/treatments-edit"
+        component={() => <TreatmentsEdit />}
+      />
       <Route
         exact
         path="/treatmentslist"

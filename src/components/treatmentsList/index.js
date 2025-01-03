@@ -72,8 +72,8 @@ const Faq = () => {
                     icon={faEdit}
                     onClick={() => {
                       history.push({
-                        pathname: "/faqedit",
-                        state: { faqData: data },
+                        pathname: "/treatments-edit",
+                        state: { treatmentsData: data },
                       });
                       setDeletedFAQId(data._id);
                     }}
