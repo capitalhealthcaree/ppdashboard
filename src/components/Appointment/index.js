@@ -529,13 +529,13 @@ const Appointment = () => {
                     })}
                   </div>
                   <div>
-                    <h5 className="d-inline mr-3">First Name:</h5>
+                    <h5 className="d-inline mr-3">Full Name:</h5>
                     <p className="d-inline">{item.firstName}</p>
                   </div>
-                  <div>
+                  {/* <div>
                     <h5 className="d-inline mr-3">Last Name:</h5>
                     <p className="d-inline">{item.lastName}</p>
-                  </div>
+                  </div> */}
                   <div>
                     <h5 className="d-inline mr-3">Phone:</h5>
                     <p className="d-inline">{item.phone}</p>
@@ -547,6 +547,10 @@ const Appointment = () => {
                   <div>
                     <h5 className="d-inline mr-3">Patient Type:</h5>
                     <p className="d-inline">{item.patientType}</p>
+                  </div>
+                  <div>
+                    <h5 className="d-inline mr-3">Location:</h5>
+                    <p className="d-inline">{item.location}</p>
                   </div>
                   <div>
                     <h5 className="d-inline mr-3">Message:</h5>
