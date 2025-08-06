@@ -38,7 +38,7 @@ const BlogEdit = () => {
       foucKW: foucKW,
       slug: slug,
       seoTitle: seoTitle,
-      category: category,
+      category: "",
       // image: urls,
     };
     setLoader(true);

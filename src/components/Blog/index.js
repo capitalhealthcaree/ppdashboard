@@ -37,7 +37,7 @@ const Blog = () => {
               foucKW: foucKW,
               slug: slug,
               seoTitle: seoTitle,
-              category: category,
+              category: "",
               image: urls,
             };
             if (seoTitle.toString().length <= 70) {
