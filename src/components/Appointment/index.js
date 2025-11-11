@@ -549,7 +549,7 @@ const Appointment = () => {
                     <p className="d-inline">{item.patientType}</p>
                   </div>
                   <div>
-                    <h5 className="d-inline mr-3">Location:</h5>
+                    <h5 className="d-inline mr-3">Insurance:</h5>
                     <p className="d-inline">{item.location}</p>
                   </div>
                   <div>
