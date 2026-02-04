@@ -40,7 +40,7 @@ const Blog = () => {
               category: "",
               image: urls,
             };
-            if (seoTitle.toString().length <= 70) {
+            if (seoTitle.toString().length <= 75) {
               setSeoTitleError(false);
               setLoader(true);
               let res = await api.post("/blogs/create", finalData);
